@@ -1,26 +1,47 @@
-// Wait for the HTML document to be fully loaded before running the script
+// Wait for the HTML document to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
 
-    // Get a reference to the navigation bar element
     const nav = document.getElementById('main-nav');
+    const menuToggle = document.getElementById('menu-toggle'); // Get hamburger button
+    const navLinks = document.getElementById('nav-links');    // Get the links list (ul)
+    const navLinkItems = navLinks.querySelectorAll('a'); // Get all links within the nav
 
-    // Define a scroll threshold (how far down the user needs to scroll before the style changes)
-    // You can adjust this value (in pixels)
     const scrollThreshold = 50;
 
-    // Listen for the 'scroll' event on the window
+    // --- Scroll Detection (same as before) ---
     window.addEventListener('scroll', function() {
-        // Get the current vertical scroll position
         const scrollPosition = window.scrollY || document.documentElement.scrollTop;
-
-        // Check if the scroll position is greater than the threshold
         if (scrollPosition > scrollThreshold) {
-            // If scrolled past the threshold, add the 'scrolled' class to the nav bar
             nav.classList.add('scrolled');
         } else {
-            // If not scrolled past the threshold (or scrolled back up), remove the 'scrolled' class
             nav.classList.remove('scrolled');
         }
     });
 
-}); // End of DOMContentLoaded listener
+    // --- Hamburger Menu Toggle ---
+    if (menuToggle && navLinks) { // Check if elements exist
+        menuToggle.addEventListener('click', function() {
+            // Toggle the 'active' class on the button for 'X' animation
+            menuToggle.classList.toggle('active');
+            // Toggle the 'mobile-menu-active' class on the nav links list to show/hide
+            navLinks.classList.toggle('mobile-menu-active');
+
+            // ARIA accessibility: Update aria-expanded attribute
+            const isExpanded = navLinks.classList.contains('mobile-menu-active');
+            menuToggle.setAttribute('aria-expanded', isExpanded);
+        });
+    }
+
+    // --- Close Mobile Menu When Link is Clicked (Optional but good UX) ---
+     navLinkItems.forEach(link => {
+        link.addEventListener('click', () => {
+            // Check if the mobile menu is currently active
+            if (navLinks.classList.contains('mobile-menu-active')) {
+                 // If yes, simulate a click on the toggle button to close it
+                 menuToggle.click();
+
+            }
+        });
+     });
+
+});
