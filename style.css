@@ -1,79 +1,190 @@
-/* Basic Reset & Body Styling */
+/* Basic Reset & Body Styling (same as before) */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* Easier width/height calculations */
+    box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif; /* Simple, clean font */
+    font-family: Arial, sans-serif;
     line-height: 1.6;
 }
 
 /* Navigation Bar Styling */
 #main-nav {
-    position: fixed; /* Stick to the viewport */
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100%; /* Span full width */
-    background-color: #2c3e50; /* Initial dark blue-grey background */
-    padding: 15px 0; /* Vertical padding */
-    z-index: 1000; /* Ensure it's above other content */
-    transition: background-color 0.4s ease, padding 0.4s ease; /* Smooth transition for changes */
-    text-align: center; /* Center the list within the nav */
+    width: 100%;
+    background-color: #2c3e50;
+    padding: 15px 20px; /* Add horizontal padding */
+    z-index: 1000;
+    transition: background-color 0.4s ease, padding 0.4s ease;
+    display: flex; /* Use flexbox for alignment */
+    justify-content: space-between; /* Pushes logo/brand (if added) and links apart */
+    align-items: center; /* Vertically center items */
 }
 
-#main-nav ul {
-    list-style: none; /* Remove default bullet points */
-    display: inline-block; /* Allows centering via text-align on parent */
+/* Hamburger Menu Button Styling */
+#menu-toggle {
+    display: none; /* Hidden by default on larger screens */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1010; /* Ensure button is above dropdown */
+}
+
+#menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #ecf0f1; /* Color of bars */
+    margin: 5px 0;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Navigation Links List */
+#nav-links {
+    list-style: none;
+    display: flex; /* Use flexbox for horizontal layout on desktop */
+    margin: 0; /* Reset margin */
 }
 
 #main-nav li {
-    display: inline-block; /* Display items side-by-side */
+    /* Remove display: inline-block if previously set */
     margin: 0 15px; /* Space between menu items */
 }
 
 #main-nav a {
-    color: #ecf0f1; /* Light grey text color */
-    text-decoration: none; /* Remove underline */
+    color: #ecf0f1;
+    text-decoration: none;
     font-weight: bold;
-    padding: 8px 12px; /* Padding for clickable area */
-    border-radius: 4px; /* Slightly rounded corners for hover */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover */
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: block; /* Ensures padding works correctly */
 }
 
-/* --- Interactivity Styling --- */
-
-/* Style for Menu Items on Hover */
+/* --- Desktop Interactivity Styling (same as before) --- */
 #main-nav a:hover {
-    background-color: #3498db; /* Brighter blue background on hover */
-    color: #ffffff; /* White text on hover */
+    background-color: #3498db;
+    color: #ffffff;
 }
 
-/* Style for the ENTIRE Nav Bar when Scrolled */
 #main-nav.scrolled {
-    background-color: #ffffff; /* White background when scrolled */
-    padding: 10px 0; /* Slightly reduce padding when scrolled */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    background-color: #ffffff;
+    padding: 10px 20px; /* Adjust padding */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Style for Links INSIDE the Nav Bar when Scrolled */
 #main-nav.scrolled a {
-    color: #34495e; /* Darker text color for contrast on white */
+    color: #34495e;
 }
 
-/* Style for Links on Hover when the Nav Bar is Scrolled */
 #main-nav.scrolled a:hover {
-    background-color: #f1f1f1; /* Light grey background on hover */
-    color: #1a1a1a; /* Very dark text on hover */
+    background-color: #f1f1f1;
+    color: #1a1a1a;
+}
+
+/* Adjust hamburger bar color when scrolled */
+#main-nav.scrolled #menu-toggle span {
+    background-color: #34495e;
 }
 
 
-/* Dummy Content Styling */
+/* --- Responsive Styles --- */
+@media (max-width: 768px) {
+    #main-nav {
+        padding: 10px 15px; /* Adjust padding for smaller screens */
+         /* Ensure nav stays on top when menu is open */
+        position: fixed; /* Keep it fixed */
+    }
+
+    #menu-toggle {
+        display: block; /* Show the hamburger button */
+    }
+
+    #nav-links {
+        display: none; /* Hide the links list by default */
+        position: absolute; /* Position it relative to the nav bar */
+        top: 100%; /* Start below the nav bar */
+        left: 0;
+        width: 100%;
+        background-color: #34495e; /* Background for the dropdown */
+        flex-direction: column; /* Stack links vertically */
+        padding: 10px 0; /* Add some padding */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Style for when the mobile menu is active/open */
+    #nav-links.mobile-menu-active {
+        display: flex; /* Show the menu */
+    }
+
+    #main-nav li {
+        margin: 0; /* Remove horizontal margins */
+        width: 100%; /* Make list items full width */
+        text-align: center; /* Center the link text */
+    }
+
+    #main-nav a {
+        padding: 15px 0; /* Adjust padding for vertical layout */
+        border-bottom: 1px solid #4a627a; /* Separator line */
+        border-radius: 0; /* Remove border-radius */
+        width: 100%; /* Ensure link takes full width */
+    }
+    #main-nav li:last-child a {
+        border-bottom: none; /* Remove border from last item */
+    }
+
+    #main-nav a:hover {
+        background-color: #2c3e50; /* Slightly different hover for mobile */
+        color: #ffffff;
+    }
+
+    /* Scrolled styles for links in mobile menu */
+    #main-nav.scrolled #nav-links {
+         background-color: #f8f9fa; /* Lighter background when scrolled */
+    }
+     #main-nav.scrolled #nav-links a {
+        color: #34495e; /* Darker text when scrolled */
+        border-bottom-color: #e0e0e0; /* Lighter separator */
+     }
+     #main-nav.scrolled #nav-links a:hover {
+         background-color: #e9ecef; /* Light grey hover when scrolled */
+         color: #1a1a1a;
+     }
+
+
+    /* Hamburger to "X" animation when active */
+    #menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    #menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    #menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+     /* Adjust "X" color when scrolled */
+    #main-nav.scrolled #menu-toggle.active span {
+         background-color: #34495e; /* Ensure X is dark on white bg */
+    }
+
+
+}
+
+
+/* Dummy Content Styling (same as before, but maybe adjust top padding) */
 .content {
-    padding: 100px 20px 20px 20px; /* Top padding avoids content hiding under fixed nav */
-    min-height: 100vh; /* Make each section at least viewport height */
-    border-bottom: 1px solid #ccc; /* Just to visually separate sections */
+    /* Adjust top padding based on the potentially smaller nav height on mobile */
+    /* Start with desktop height, override in media query if needed */
+    padding-top: 80px; /* Adjust if nav height changes significantly */
+    min-height: 100vh;
+    border-bottom: 1px solid #ccc;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .content h1 {
