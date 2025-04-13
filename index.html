@@ -2,14 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Navigation Menu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Responsive Navigation Menu</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <nav id="main-nav">
-        <ul>
+        <button id="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+            <span></span> <span></span> <span></span> </button>
+
+        <ul id="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#services">Services</a></li>
@@ -20,29 +22,13 @@
 
     <div class="content" id="home">
         <h1>Welcome to the Home Section</h1>
-        <p>Scroll down to see the navigation menu change!</p>
+        <p>Scroll down to see the navigation menu change! Resize your browser window to see the responsive hamburger menu.</p>
         <p>This section is just placeholder content to make the page long enough to scroll.</p>
-        </div>
-
-    <div class="content" id="about" style="background-color: #f0f0f0;">
-        <h1>About Section</h1>
-        <p>More placeholder content.</p>
     </div>
-
-    <div class="content" id="services">
-        <h1>Services Section</h1>
-        <p>Even more placeholder content.</p>
-    </div>
-
-     <div class="content" id="portfolio" style="background-color: #f0f0f0;">
-        <h1>Portfolio Section</h1>
-        <p>Placeholder content continues.</p>
-    </div>
-
-     <div class="content" id="contact">
-        <h1>Contact Section</h1>
-        <p>Final placeholder content area.</p>
-    </div>
+    <div class="content" id="about" style="background-color: #f0f0f0;"><h1>About Section</h1><p>More placeholder content.</p></div>
+    <div class="content" id="services"><h1>Services Section</h1><p>Even more placeholder content.</p></div>
+    <div class="content" id="portfolio" style="background-color: #f0f0f0;"><h1>Portfolio Section</h1><p>Placeholder content continues.</p></div>
+    <div class="content" id="contact"><h1>Contact Section</h1><p>Final placeholder content area.</p></div>
 
     <script src="script.js"></script>
 </body>
