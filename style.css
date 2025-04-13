@@ -1,0 +1,81 @@
+/* Basic Reset & Body Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Easier width/height calculations */
+}
+
+body {
+    font-family: Arial, sans-serif; /* Simple, clean font */
+    line-height: 1.6;
+}
+
+/* Navigation Bar Styling */
+#main-nav {
+    position: fixed; /* Stick to the viewport */
+    top: 0;
+    left: 0;
+    width: 100%; /* Span full width */
+    background-color: #2c3e50; /* Initial dark blue-grey background */
+    padding: 15px 0; /* Vertical padding */
+    z-index: 1000; /* Ensure it's above other content */
+    transition: background-color 0.4s ease, padding 0.4s ease; /* Smooth transition for changes */
+    text-align: center; /* Center the list within the nav */
+}
+
+#main-nav ul {
+    list-style: none; /* Remove default bullet points */
+    display: inline-block; /* Allows centering via text-align on parent */
+}
+
+#main-nav li {
+    display: inline-block; /* Display items side-by-side */
+    margin: 0 15px; /* Space between menu items */
+}
+
+#main-nav a {
+    color: #ecf0f1; /* Light grey text color */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold;
+    padding: 8px 12px; /* Padding for clickable area */
+    border-radius: 4px; /* Slightly rounded corners for hover */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover */
+}
+
+/* --- Interactivity Styling --- */
+
+/* Style for Menu Items on Hover */
+#main-nav a:hover {
+    background-color: #3498db; /* Brighter blue background on hover */
+    color: #ffffff; /* White text on hover */
+}
+
+/* Style for the ENTIRE Nav Bar when Scrolled */
+#main-nav.scrolled {
+    background-color: #ffffff; /* White background when scrolled */
+    padding: 10px 0; /* Slightly reduce padding when scrolled */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Style for Links INSIDE the Nav Bar when Scrolled */
+#main-nav.scrolled a {
+    color: #34495e; /* Darker text color for contrast on white */
+}
+
+/* Style for Links on Hover when the Nav Bar is Scrolled */
+#main-nav.scrolled a:hover {
+    background-color: #f1f1f1; /* Light grey background on hover */
+    color: #1a1a1a; /* Very dark text on hover */
+}
+
+
+/* Dummy Content Styling */
+.content {
+    padding: 100px 20px 20px 20px; /* Top padding avoids content hiding under fixed nav */
+    min-height: 100vh; /* Make each section at least viewport height */
+    border-bottom: 1px solid #ccc; /* Just to visually separate sections */
+}
+
+.content h1 {
+    margin-bottom: 20px;
+}
